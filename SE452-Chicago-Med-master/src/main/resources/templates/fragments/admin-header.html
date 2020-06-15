@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="common-header">
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/app.css">
+            <title>Chicago Med</title>
+        <style>
+            body {
+                font-family: Arial;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            form.admin-portal-search-container {
+                display: inline-block;
+                width: 40%;
+                vertical-align: middle;
+            }
+
+            form.admin-portal-search-container input[type=text] {
+                position:relative;
+                left:10%;
+                padding: 10px;
+                font-size: 17px;
+                border: 1px solid grey;
+                float: left;
+                width: 66%;
+                background: #f1f1f1;
+            }
+
+            form.admin-portal-search-container button {
+                position:relative;
+                left:10%;
+                float: left;
+                width: 10%;
+                padding: 10px;
+                background: #2196F3;
+                color: white;
+                font-size: 17px;
+                border: 1px solid grey;
+                border-left: none;
+                cursor: pointer;
+            }
+
+            form.admin-portal-search-container button:hover {
+                background: #0b7dda;
+            }
+
+            form.admin-portal-search-container::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+        </style>
+        <script>
+            function createNewPatient() {
+                var adminId = sessionStorage.getItem('adminId')
+                location.href='admin-new-patient?adminId=' + adminId
+            }
+            function createNewDoctor() {
+                var adminId = sessionStorage.getItem('adminId')
+                location.href='admin-new-doctor?adminId=' + adminId
+            }
+        </script>
+    </head>
+    <body>
+        <div th:fragment="header" class="header">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div style="width: 33%; text-align: center;"  >
+                        <button type="button" class="btn btn-secondary"  onclick="location.href = 'home';">Logout</button>
+                    </div>
+                    <div class="navbar-header" style="width: 33%; text-align: center;">
+                        <h2>Chicago Med Application</h2>
+                    </div>
+                    <div style="width:33%; text-align: center;">
+                            <p><button class="btn btn-success" onclick="createNewPatient()">Create a New Patient</button></p>
+                            <p><button class="btn btn-success" onclick="createNewDoctor()">Create a New Doctor </button></p>
+                    </div>
+                </div>
+            </nav>
+            <hr>
+        </div>
+
+
+    </body>
+</html>

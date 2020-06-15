@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="common-header">
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/app.css">
+        <title>Chicago Med Application</title>
+    </head>
+    <body>
+    <div th:fragment="header" class="header">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div style="width: 25%; text-align: center;"  >
+                    <button type="button" class="btn btn-secondary" onclick="location.href = 'home';">Logout</button>
+                </div>
+                <div class="navbar-header" style="width: 25%; text-align: center;">
+                    <h2>Chicago Med Application</h2>
+                </div>
+                <br/>
+                <div style="width:25%; text-align: center;">
+                    <h2>Patient Portal</h2>
+                </div>
+                <div style="width: 25%; text-align: center;">
+                    <ul class="nav navbar-nav">
+                        <li><h3><a type="link" class="btn btn-secondary" th:href="@{/patient-appointment(patientId=${patient.getPatientId()})}">View Your Appointments</a></h3></li>
+                        <li><h3><a type="link" class="btn btn-secondary" th:href="@{/new-appointment(patientId=${patient.getPatientId()})}">Schedule a New Appointment</a></h3></li>
+                        <li><h3><a th:href="@{/list-locations(patientId=${patient.getPatientId()})}" class="btn btn-secondary">View Location</a> </h3></li>
+                        <li><h3><a th:href="@{/list-doctors(patientId=${patient.getPatientId()})}" class="btn btn-secondary">View Doctor</a> </h3></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+        <hr>
+    </div>
+
+
+    </body>
+</html>

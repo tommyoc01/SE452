@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="fragments/doctor-header :: common-header">
+    </head>
+<body>
+<div th:replace="fragments/doctor-header :: header"></div>
+
+
+<div class="content">
+    <div id="doctor-patient-view-label">
+        <h1>Upcoming Appointments for Dr. <span th:text="${doctor.getDoctorLastName()}"></span></h1>
+    </div>
+    <div class="doctor-patient-table">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Patient Last Name</th>
+                    <th>Patient First Name</th>
+                    <th>Appointment Date</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${appts.empty}">
+                    <td colspan="2"> No Appointments Available </td>
+                </tr>
+                <tr th:each="appt : ${appts}">
+                    <td span th:text="${appt.patient.patientLastName}"></td>
+                    <td span th:text="${appt.patient.patientFirstName}"></td>
+                    <td span th:text="${appt.appointmentDate}"></td>
+                    <td><a th:href="@{/doctor-appointment(apptId=${appt.appointmentId})}">View Patient Details</a></td>
+                </tr>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="fragments/app-footer :: footer"></div>
+</body>
+</html>
